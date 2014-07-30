@@ -120,7 +120,7 @@ def map(requests, stream=False, size=None, exception_handler=None):
         if request.response:
             ret.append(request.response)
         elif exception_handler:
-            exception_handler(request, request.exception)
+            exception_handler(request)
 
     return ret
 
@@ -144,6 +144,6 @@ def imap(requests, stream=False, size=2, exception_handler=None):
         if request.response:
             yield request.response
         elif exception_handler:
-            exception_handler(request, request.exception)
+            exception_handler(request)
 
     pool.join()
